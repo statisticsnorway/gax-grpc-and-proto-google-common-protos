@@ -30,7 +30,7 @@ steps:
   - name: publish-maven
     image: maven:3.6.1-jdk-11-slim
     commands:
-      - mvn deploy -P ssb-bip -Dmaven.repo.local=/drone/src/.m2/repository -DskipTests=true --batch-mode --global-settings settings.xml
+      - mvn deploy -X -e -P ssb-bip -Dmaven.repo.local=/drone/src/.m2/repository -DskipTests=true --batch-mode --global-settings settings.xml
     when:
       event:
         exclude: pull_request
