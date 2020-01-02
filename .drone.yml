@@ -20,7 +20,7 @@ steps:
         from_secret: maven_servers
 
   - name: build
-    image: maven:3.6.0-jdk-11-slim
+    image: maven:3.6.1-jdk-11-slim
     commands:
       - mvn install -P ssb-bip -Dmaven.repo.local=/drone/src/.m2/repository --batch-mode --global-settings settings.xml
     depends_on:
@@ -28,7 +28,7 @@ steps:
       - restore-cache
 
   - name: publish-maven
-    image: maven:3.6.0-jdk-11-slim
+    image: maven:3.6.1-jdk-11-slim
     commands:
       - mvn deploy -P ssb-bip -Dmaven.repo.local=/drone/src/.m2/repository -DskipTests=true --batch-mode --global-settings settings.xml
     when:
